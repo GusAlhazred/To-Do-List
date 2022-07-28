@@ -1,10 +1,9 @@
 const btnAgregar = document.querySelector("[data-btn-agregar]");
-const arrayListaTareas = [];
-let  max=0;
+let arrayListaTareas = [];
+arrayListaTareas = JSON.parse(localStorage.getItem("tareas"));
 
 class DatosTarea {
-    constructor (id,nro,tarea,hecha){
-        this.id=id,
+    constructor (nro,tarea,hecha){
         this.nro= nro,
         this.tarea = tarea,
         this.hecha = hecha
@@ -13,7 +12,6 @@ class DatosTarea {
 
 const borrarTarea = (e) => {
     const posicion=parseInt(e.target.dataset.id)-1;
-    // console.log(btnId)
     arrayListaTareas.splice(posicion,1);
     
     for (i=posicion; i< arrayListaTareas.length; i++){
@@ -71,13 +69,13 @@ const dibujarArray= () => {
         btnBorrar.classList.add ("btn", "btnSacar");
         btnBorrar.dataset.id= i;
         tarea.appendChild(btnBorrar);
-        btnBorrar.addEventListener("click", borrarTarea)
-
+        btnBorrar.addEventListener("click", borrarTarea);
         tareaListada.hecha? tarea.classList.add("tareaCompleta") : tarea.classList.remove("tareaCompleta");
-
-        
         lista.appendChild(tarea)
     }
+    const arrayListaTareasStr= JSON.stringify(arrayListaTareas);
+    console.log(arrayListaTareasStr)
+    localStorage.setItem("tareas", arrayListaTareasStr)
 }
 
 const agregarLista= (e) => {
@@ -85,13 +83,14 @@ const agregarLista= (e) => {
     const input = document.querySelector("[data-txt-agregar]");
     const descripcionTarea = input.value;
     input.value = "";
-    const nuevaTarea = new DatosTarea(arrayListaTareas.length, arrayListaTareas.length+1, descripcionTarea, false)
+    const nuevaTarea = new DatosTarea(arrayListaTareas.length+1, descripcionTarea, false)
     arrayListaTareas.push(nuevaTarea);
     console.log(arrayListaTareas);
     dibujarArray()
-    max++;
     console.log(descripcionTarea);
 }
 
-
+// localStorage.getItem("tareas",arrayListaTareas);
+console.log(arrayListaTareas)
 btnAgregar.addEventListener("click", agregarLista);
+dibujarArray();
