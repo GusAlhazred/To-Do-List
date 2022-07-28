@@ -17,7 +17,6 @@ const borrarTarea = (e) => {
     for (i=posicion; i< arrayListaTareas.length; i++){
         arrayListaTareas[i].nro=i+1;
     }
-    console.log(arrayListaTareas)
     dibujarArray();
 }
 
@@ -29,22 +28,47 @@ const terminarTarea = (e) => {
 }
 
 const generarLblNroTarea = () => {
-    
+    const nroTareaLabel = document.createElement("label");
+    nroTareaLabel.innerText = "Tarea Nro: ";
+    return(nroTareaLabel)
 }
 const generarNroTarea = () => {
-    
+    const nroTarea = document.createElement("input");
+    nroTarea.value = tareaListada.nro;
+    nroTarea.classList.add("prioridad");
+    nroTarea.disabled = true;
+    return(nroTarea)
 }
 const generarLblDescripcionTarea = () => {
-    
+    const lblTarea = document.createElement("label");
+    lblTarea.innerText = "Descripcion: ";
+    return(lblTarea)
 }
 const generarDescripcionTarea = () => {
-    
+    const descripcionTarea = document.createElement("p");
+    descripcionTarea.classList.add("tarea");
+    descripcionTarea.innerText = tareaListada.tarea;
+    descripcionTarea.classList.add("descripcionTarea");
+    return(descripcionTarea)
 }
-const generarBtnCompletarTarea = () => {
-    
+const generarBtnCompletarTarea = (i) => {
+    const btnHecho = document.createElement("input");
+    btnHecho.type="button";
+    btnHecho.value = "✓";
+    btnHecho.classList.add ("btn", "btnCompleto");
+    btnHecho.dataset.id= i;
+    btnHecho.addEventListener ("click", terminarTarea)
+    return(btnHecho)    
 }
-const generarBtnBorrarTarea = () => {
+const generarBtnBorrarTarea = (i) => {
     
+    const btnBorrar = document.createElement("input");
+    btnBorrar.type="button";
+    btnBorrar.value = "✘";
+    btnBorrar.classList.add ("btn", "btnSacar");
+    btnBorrar.dataset.id= i;
+    btnBorrar.addEventListener("click", borrarTarea);
+    return(btnBorrar)
 }
 
 
@@ -57,44 +81,22 @@ const dibujarArray= () => {
     lista.innerHTML= "";
     for (tareaListada of arrayListaTareas){
         i++;
-        const tarea = document.createElement("div");
+        const tarea = document.createElement("div");       
         
-        const nroTareaLabel = document.createElement("label");
-        nroTareaLabel.innerText = "Tarea Nro: ";
-        tarea.appendChild(nroTareaLabel);
+        tarea.appendChild(generarLblNroTarea());
         
-        const nroTarea = document.createElement("input");
-        nroTarea.value = tareaListada.nro;
-        nroTarea.classList.add("prioridad");
-        nroTarea.disabled = true;
-        tarea.appendChild(nroTarea);
+        tarea.appendChild(generarNroTarea());
+
+        tarea.appendChild(generarLblDescripcionTarea());
         
-        const lblTarea = document.createElement("label");
-        lblTarea.innerText = "Descripcion: ";
-        tarea.appendChild(lblTarea);
+        tarea.appendChild(generarDescripcionTarea());        
+
+        tarea.appendChild(generarBtnCompletarTarea(i));
         
-        const descripcionTarea = document.createElement("p");
-        descripcionTarea.classList.add("tarea");
-        descripcionTarea.innerText = tareaListada.tarea;
-        descripcionTarea.classList.add("descripcionTarea");
-        tarea.appendChild(descripcionTarea);
-        
-        const btnHecho = document.createElement("input");
-        btnHecho.type="button";
-        btnHecho.value = "✓";
-        btnHecho.classList.add ("btn", "btnCompleto");
-        btnHecho.dataset.id= i;
-        tarea.appendChild(btnHecho);
-        btnHecho.addEventListener ("click", terminarTarea)
-        
-        const btnBorrar = document.createElement("input");
-        btnBorrar.type="button";
-        btnBorrar.value = "✘";
-        btnBorrar.classList.add ("btn", "btnSacar");
-        btnBorrar.dataset.id= i;
-        tarea.appendChild(btnBorrar);
-        btnBorrar.addEventListener("click", borrarTarea);
+        tarea.appendChild(generarBtnBorrarTarea(i));
+
         tareaListada.hecha? tarea.classList.add("tareaCompleta") : tarea.classList.remove("tareaCompleta");
+        
         lista.appendChild(tarea)
     }
     const arrayListaTareasStr= JSON.stringify(arrayListaTareas);
