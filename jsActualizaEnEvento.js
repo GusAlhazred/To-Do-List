@@ -1,6 +1,5 @@
 const btnAgregar = document.querySelector("[data-btn-agregar]");
-let arrayListaTareas = [];
-arrayListaTareas = JSON.parse(localStorage.getItem("tareas"));
+let arrayListaTareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
 class DatosTarea {
     constructor (nro,tarea,hecha){
@@ -90,7 +89,5 @@ const agregarLista= (e) => {
     console.log(descripcionTarea);
 }
 
-// localStorage.getItem("tareas",arrayListaTareas);
-console.log(arrayListaTareas)
 btnAgregar.addEventListener("click", agregarLista);
 dibujarArray();
