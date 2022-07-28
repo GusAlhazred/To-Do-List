@@ -1,4 +1,5 @@
 const btnAgregar = document.querySelector("[data-btn-agregar]");
+const btnReiniciar = document.querySelector("[data-btn-reiniciar]");
 let arrayListaTareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
 class DatosTarea {
@@ -27,6 +28,29 @@ const terminarTarea = (e) => {
     
 }
 
+const generarLblNroTarea = () => {
+    
+}
+const generarNroTarea = () => {
+    
+}
+const generarLblDescripcionTarea = () => {
+    
+}
+const generarDescripcionTarea = () => {
+    
+}
+const generarBtnCompletarTarea = () => {
+    
+}
+const generarBtnBorrarTarea = () => {
+    
+}
+
+
+
+
+
 const dibujarArray= () => {
     const lista = document.querySelector("[data-lista-tareas]");
     let i=0;
@@ -52,6 +76,7 @@ const dibujarArray= () => {
         const descripcionTarea = document.createElement("p");
         descripcionTarea.classList.add("tarea");
         descripcionTarea.innerText = tareaListada.tarea;
+        descripcionTarea.classList.add("descripcionTarea");
         tarea.appendChild(descripcionTarea);
         
         const btnHecho = document.createElement("input");
@@ -89,5 +114,13 @@ const agregarLista= (e) => {
     console.log(descripcionTarea);
 }
 
+const reiniciarLista = () => {
+    arrayListaTareas=[];
+    localStorage.removeItem("tareas")
+    dibujarArray();
+}
+
+
 btnAgregar.addEventListener("click", agregarLista);
+btnReiniciar.addEventListener("click", reiniciarLista);
 dibujarArray();
