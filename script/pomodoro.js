@@ -55,7 +55,7 @@ const esteticaPlay = () => {
 const pausarReloj = () => {
     if (estaPausado){
         estaPausado = false;
-        correrReloj = setInterval(refrescarReloj, 1);
+        correrReloj = setInterval(refrescarReloj, 1000);
         esteticaPlay();
     } else {
         estaPausado = true;
@@ -97,7 +97,7 @@ const refrescarReloj = () => {
 const empezarReloj = () => {
     seteoReloj();
     modificarBtnPomodoro();
-    correrReloj = setInterval(refrescarReloj, 1);
+    correrReloj = setInterval(refrescarReloj, 1000);
     console.log(correrReloj);
 
 }
