@@ -116,7 +116,8 @@ const agregarLista= (e) => {
     console.log(descripcionTarea);
 }
 
-const reiniciarLista = () => {
+const reiniciarLista = (e) => {
+    e.preventDefault()
     arrayListaTareas=[];
     localStorage.removeItem("tareas")
     dibujarArray();
