@@ -4,22 +4,55 @@ const tiempoIntervalosTrabajo = 25,
     btnPomodoro = document.querySelector("[data-btnPomodoro]"),
     btnReinicio = document.querySelector("[data-btnPomodoroReinicio]"),
     containerReloj = document.querySelector("[data-pomodoroTimer]"),
-    descripcionPomodoro = document.querySelector("[data-pomodoroDescripcion]");
+    descripcionPomodoro = document.querySelector("[data-pomodoroDescripcion]"),
+    btnTrabajo = document.querySelector("[data-btnTrabajo]"),
+    btnDescansoCorto = document.querySelector("[data-btnDescansoCorto]"),
+    btnDescansoLargo = document.querySelector("[data-btnDescansoLargo]"),
+    infoNroVuelta = document.querySelector("[data-infoVueltas]");
 
 let tiempoActual,
     correrReloj,
     trabajoActivo = true,
-    relojTerminado = true;
-    estaPausado = false;
+    relojTerminado = true,
+    estaPausado = false,
+    nroVuelta = 0,
+    nroEjecutacion = 0;
+
+
+const fixTrabajar = () => {
+    trabajoActivo = true;
+    nroVuelta = 0;
+    nroEjecutacion = 0;
+}
+
+const fixDescansoCorto = () => {
+    trabajoActivo = false;
+    nroVuelta = 0;
+    nroEjecutacion = 0;
+}
+
+const fixDescansoLargo = () => {
+    trabajoActivo = false;
+    nroVuelta = 4;
+}
+
+const agregarListenersAModoBtn = () => {
+    btnTrabajo.addEventListener("click", fixTrabajar);
+    btnDescansoCorto.addEventListener("click", fixDescansoCorto);
+    btnDescansoLargo.addEventListener("click", fixDescansoLargo)
+
+}
 
 const esticaReinicio = () => {
     containerReloj.classList.remove("pomodoroTimerConcentrate");
+    containerReloj.classList.remove("pomodoroTimerRelaxLargo");
     containerReloj.classList.remove("pomodoroTimerRelax");
     descripcionPomodoro.innerHTML = "Empezar!"
 }
 
 const esteticaTrabajar = () => {
     containerReloj.classList.add("pomodoroTimerConcentrate");
+    containerReloj.classList.remove("pomodoroTimerRelaxLargo");
     containerReloj.classList.remove("pomodoroTimerRelax");
     descripcionPomodoro.innerHTML="Concentrate!!"
 
@@ -30,18 +63,48 @@ const esteticaRelax = () => {
     containerReloj.classList.add("pomodoroTimerRelax");
     descripcionPomodoro.innerHTML="A relajaaaaar"
 }
+const esteticaRelaxLargo = () => {
+    containerReloj.classList.remove("pomodoroTimerConcentrate");
+    containerReloj.classList.add("pomodoroTimerRelaxLargo");
+    descripcionPomodoro.innerHTML="A relajaaaaar"
+}
+
+const configTrabajo = () => {
+    trabajoActivo=false
+    tiempoActual = tiempoIntervalosTrabajo *60;
+    esteticaTrabajar();
+}
+
+const configRelaxLargo = () => {
+    trabajoActivo=true;
+    tiempoActual = tiempoIntervalosDescanso *60 * 3;
+    esteticaRelaxLargo();
+    nroEjecutacion =0;
+    nroVuelta = 0;
+}
+const configRelaxCorto = () => {
+    trabajoActivo=true;
+    tiempoActual = tiempoIntervalosDescanso *60 ;
+    esteticaRelax();
+}
+
+
+
 
 const seteoReloj = () => {
-    if (trabajoActivo){
-        trabajoActivo=false
-        tiempoActual = tiempoIntervalosTrabajo *60;
-        esteticaTrabajar();
+    if ((trabajoActivo) && (nroVuelta <= 4)) {
+        configTrabajo();    
+    } else if (nroVuelta === 4)  {
+        configRelaxLargo();
     } else {
-        trabajoActivo=true;
-        tiempoActual = tiempoIntervalosDescanso *60;
-        esteticaRelax();
+        configRelaxCorto();
     }
-    relojTerminado=false
+    relojTerminado=false;
+    
+    nroEjecutacion++;
+    nroEjecutacion % 2 ===0? nroVuelta++ : nroVuelta;
+    console.log("Ejecucion: ", nroEjecutacion)
+    console.log("Vuelta: ", nroVuelta)
 }
 
 const esteticaPausa= () => {
@@ -55,13 +118,14 @@ const esteticaPlay = () => {
 const pausarReloj = () => {
     if (estaPausado){
         estaPausado = false;
-        correrReloj = setInterval(refrescarReloj, 1000);
+        correrReloj = setInterval(refrescarReloj, 1);
         esteticaPlay();
     } else {
         estaPausado = true;
         clearInterval(correrReloj);
         esteticaPausa();
     }
+    
 }
 
 
@@ -75,7 +139,6 @@ const modificarBtnPomodoro = () => {
         btnPomodoro.addEventListener("click", pausarReloj);
         esteticaPlay();
     }
-    
 }
 
 const refrescarReloj = () => {
@@ -90,6 +153,7 @@ const refrescarReloj = () => {
         console.log(correrReloj);
         relojTerminado=true;
         modificarBtnPomodoro();
+        agregarListenersAModoBtn();
     }
     tiempoActual--;
 }
@@ -97,22 +161,32 @@ const refrescarReloj = () => {
 const empezarReloj = () => {
     seteoReloj();
     modificarBtnPomodoro();
-    correrReloj = setInterval(refrescarReloj, 1000);
-    console.log(correrReloj);
+    infoNroVuelta.innerHTML = "Nro Vuelta: " + (Math.floor(nroEjecutacion/2) +1);
+    correrReloj = setInterval(refrescarReloj, 1);
 
+    btnTrabajo.addEventRemove("click", fixTrabajar);
+    btnDescansoCorto.addEventRemove("click", fixDescansoCorto);
+    btnDescansoLargo.addEventRemove("click", fixDescansoLargo);
 }
 
 
 const reinicioPomodoro = () => {
     tiempoActual = 0;
-    refrescarReloj()
+    refrescarReloj();
     trabajoActivo = true,
     relojTerminado = true;
     estaPausado = false;
-    esteticaPausa()
-    esticaReinicio()
-    
+    nroVuelta = 0;
+    nroEjecutacion = 0;
+    esteticaPausa();
+    esticaReinicio();
+    infoNroVuelta.innerHTML ="";
 }
+
+
+
+
 
 btnPomodoro.addEventListener("click", empezarReloj)
 btnReinicio.addEventListener("click", reinicioPomodoro);
+agregarListenersAModoBtn();
