@@ -23,17 +23,20 @@ const fixTrabajar = () => {
     trabajoActivo = true;
     nroVuelta = 0;
     nroEjecutacion = 0;
+    infoNroVuelta.innerHTML="Modo Trabajo"
 }
 
 const fixDescansoCorto = () => {
     trabajoActivo = false;
     nroVuelta = 0;
     nroEjecutacion = 0;
+    infoNroVuelta.innerHTML= "Modo Descanso Rapido";
 }
 
 const fixDescansoLargo = () => {
     trabajoActivo = false;
     nroVuelta = 4;
+    infoNroVuelta.innerHTML = "Modo Descanso Largo"
 }
 
 const agregarListenersAModoBtn = () => {

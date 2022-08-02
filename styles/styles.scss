@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 24px;
+    font-family: 'Indie Flower', cursive;
+}
+body{    
+    height: 1rem;
+    background: linear-gradient(to top, #ff5 96%, #f00 100%) ;
+    background-repeat: repeat;
+}
+main{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+header{
+    height: 5rem;
+    width: 100vw;
+
+    /* border-bottom: 2px solid #669; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+h1{
+    text-shadow: 0px 0px 3px #bbb;
+    font-family: 'Cinzel', serif;
+}
+
+@import "./scss/to-doList";
+
+@import "./scss/reloj";
+
+@import "./scss/darkMode";
