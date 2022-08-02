@@ -208,6 +208,7 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   margin-left: auto;
+  margin-right: 1rem;
 }
 
 .switch {
