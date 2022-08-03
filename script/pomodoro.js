@@ -17,6 +17,7 @@ let tiempoActual,
     estaPausado = false,
     nroVuelta = 0,
     nroEjecutacion = 0;
+    btnReinicioActivo = false;
 
 
 const fixTrabajar = () => {
@@ -157,14 +158,29 @@ const refrescarReloj = () => {
         relojTerminado=true;
         modificarBtnPomodoro();
         agregarListenersAModoBtn();
+        btnReinicioActivo?  btnReinicioActivo = false : cartel();
     }
     tiempoActual--;
+}
+
+const cartel = () =>{
+    Swal.fire({
+        title: 'Terminooo!',
+        text: 'Dale play otra vez para seguir con el proximo bracket! No pierdas el ritmo!',
+        icon: 'success',
+        // confirmButtonText: 'Dale que va!',
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true
+    })
 }
 
 const empezarReloj = () => {
     seteoReloj();
     modificarBtnPomodoro();
-    infoNroVuelta.innerHTML = "Nro Vuelta: " + (Math.floor(nroEjecutacion/2) +1);
+    infoNroVuelta.innerHTML = "Nro Vuelta: " + (Math.floor((nroEjecutacion-1)/2) +1);
     correrReloj = setInterval(refrescarReloj, 1);
 
     btnTrabajo.addEventRemove("click", fixTrabajar);
@@ -175,6 +191,7 @@ const empezarReloj = () => {
 
 const reinicioPomodoro = () => {
     tiempoActual = 0;
+    btnReinicioActivo= true;
     refrescarReloj();
     trabajoActivo = true,
     relojTerminado = true;

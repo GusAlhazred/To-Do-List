@@ -36,16 +36,16 @@
     <main>
         <div class="pomodoroTimer" data-pomodoroTimer>
             <p class="pomodoroDescripcion" data-pomodoroDescripcion>Empezar!</p>
-            <p class="infoVueltas" data-infoVueltas></p>
+            <p class="infoVueltas" data-infoVueltas>Nro vuelta: 0</p>
             <p class="reloj">00:00</p>
             <div class="controlesPomodoro">
                 <button class="btnEmpezarReloj" data-btnPomodoro><i class="fa-solid fa-play"></i></button>
                 <button class="btnReiniciarReloj" data-btnPomodoroReinicio><i class="fa-solid fa-arrow-rotate-left"></i></button>
             </div>
             <div class="controlesTipoTimer">
-                <button class="btnTrabajo" data-btnTrabajo> Trabajo </button>
-                <button class="btnDescansoCorto" data-btnDescansoCorto> Descanso </button>
-                <button class="btnDescansoLargo" data-btnDescansoLargo> Descanso Largo </button>
+                <button class="btnTrabajo btnTipo" data-btnTrabajo> Trabajo </button>
+                <button class="btnDescansoCorto btnTipo" data-btnDescansoCorto> Descanso </button>
+                <button class="btnDescansoLargo btnTipo" data-btnDescansoLargo> Descanso Largo </button>
             </div>
         </div>
         <form action="">
@@ -56,12 +56,11 @@
             <div class="portaLista" data-lista-tareas>
             </div>
         </form>
-        
     </main>
 
-    <!-- <i class="fa-solid fa-pause"></i> -->
-    
-    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="./script/carteles.js"></script>
     <script src="./script/jsActualizaEnEvento.js"></script>
     <script src="./script/pomodoro.js"></script>
 </body>
