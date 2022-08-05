@@ -83,7 +83,7 @@ const configRelaxLargo = () => {
     trabajoActivo=true;
     tiempoActual = tiempoIntervalosDescanso *60 * 3;
     esteticaRelaxLargo();
-    nroEjecutacion =0;
+    nroEjecutacion =-1;
     nroVuelta = 0;
 }
 const configRelaxCorto = () => {
@@ -106,9 +106,9 @@ const seteoReloj = () => {
     relojTerminado=false;
     
     nroEjecutacion++;
-    nroEjecutacion % 2 ===0? nroVuelta++ : nroVuelta;
-    console.log("Ejecucion: ", nroEjecutacion)
-    console.log("Vuelta: ", nroVuelta)
+    nroEjecutacion % 2 ===0 && nroEjecutacion !== 0? nroVuelta++ : nroVuelta;
+    console.log("Ejecucion: ", nroEjecutacion);
+    console.log("Vuelta: ", nroVuelta);
 }
 
 const esteticaPausa= () => {
@@ -122,7 +122,7 @@ const esteticaPlay = () => {
 const pausarReloj = () => {
     if (estaPausado){
         estaPausado = false;
-        correrReloj = setInterval(refrescarReloj, 1);
+        correrReloj = setInterval(refrescarReloj, 1000);
         esteticaPlay();
     } else {
         estaPausado = true;
@@ -154,7 +154,6 @@ const refrescarReloj = () => {
     reloj.innerHTML = `${minutos}:${segundos}`;
     if (tiempoActual <= 0){
         clearInterval(correrReloj);
-        console.log(correrReloj);
         relojTerminado=true;
         modificarBtnPomodoro();
         agregarListenersAModoBtn();
@@ -165,12 +164,10 @@ const refrescarReloj = () => {
 
 const cartel = () =>{
     Swal.fire({
-        title: 'Terminooo!',
         text: 'Dale play otra vez para seguir con el proximo bracket! No pierdas el ritmo!',
         icon: 'success',
-        // confirmButtonText: 'Dale que va!',
         toast: true,
-        position: "top-right",
+        position: "top-end",
         showConfirmButton: false,
         timer: 5000,
         timerProgressBar: true
@@ -178,14 +175,14 @@ const cartel = () =>{
 }
 
 const empezarReloj = () => {
+    
+    btnTrabajo.removeEventListener("click", fixTrabajar);
+    btnDescansoCorto.removeEventListener("click", fixDescansoCorto);
+    btnDescansoLargo.removeEventListener("click", fixDescansoLargo);
     seteoReloj();
     modificarBtnPomodoro();
     infoNroVuelta.innerHTML = "Nro Vuelta: " + (Math.floor((nroEjecutacion-1)/2) +1);
-    correrReloj = setInterval(refrescarReloj, 1);
-
-    btnTrabajo.addEventRemove("click", fixTrabajar);
-    btnDescansoCorto.addEventRemove("click", fixDescansoCorto);
-    btnDescansoLargo.addEventRemove("click", fixDescansoLargo);
+    correrReloj = setInterval(refrescarReloj, 1000);
 }
 
 

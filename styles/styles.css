@@ -129,7 +129,7 @@ h1 {
   -webkit-box-shadow: 0.2rem 0.2rem 0.5rem #550;
           box-shadow: 0.2rem 0.2rem 0.5rem #550;
   font-family: 'Saira', sans-serif;
-  height: 25vh;
+  height: 27vh;
   aspect-ratio: 2/1;
 }
 
@@ -176,7 +176,7 @@ h1 {
 }
 
 .btnTipo {
-  padding: 0.5rem;
+  padding: 0.3rem;
   font-size: 0.7rem;
   border: 0;
   border-radius: 5px;
