@@ -181,7 +181,7 @@ const empezarReloj = () => {
     btnDescansoLargo.removeEventListener("click", fixDescansoLargo);
     seteoReloj();
     modificarBtnPomodoro();
-    infoNroVuelta.innerHTML = "Nro Vuelta: " + (Math.floor((nroEjecutacion-1)/2) +1);
+    infoNroVuelta.innerHTML = "Vuelta Nro: " + (Math.floor((nroEjecutacion-1)/2) +1);
     correrReloj = setInterval(refrescarReloj, 1000);
 }
 
@@ -197,7 +197,7 @@ const reinicioPomodoro = () => {
     nroEjecutacion = 0;
     esteticaPausa();
     esticaReinicio();
-    infoNroVuelta.innerHTML ="";
+    infoNroVuelta.innerHTML =`Vuelta Nro: ${nroVuelta}`;
 }
 
 

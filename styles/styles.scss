@@ -1,3 +1,5 @@
+@import "./scss/_coloresYVariables.scss";
+
 *{
     margin: 0;
     padding: 0;
@@ -8,8 +10,11 @@ html{
 }
 body{    
     height: 1rem;
-    background: linear-gradient(to top, #ff5 96%, #f00 100%) ;
+    background: linear-gradient(to top, $fondo 96%, $renglonClr 100%) ;
     background-repeat: repeat;
+    &.dark{
+        background: linear-gradient(to top, $fondoDark 96%, $renglonClrDark 100%) ;
+    }
 }
 main{
     display: flex;
@@ -19,12 +24,13 @@ main{
 header{
     height: 5rem;
     width: 100vw;
-
     /* border-bottom: 2px solid #669; */
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    body.dark &{
+        color: $clrFuenteDark;
+    }
 }
 h1{
     text-shadow: 0px 0px 3px #bbb;

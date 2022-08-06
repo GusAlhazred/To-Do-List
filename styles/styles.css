@@ -15,6 +15,11 @@ body {
   background-repeat: repeat;
 }
 
+body.dark {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(96%, #114), to(#99f));
+  background: linear-gradient(to top, #114 96%, #99f 100%);
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -39,6 +44,10 @@ header {
           justify-content: center;
 }
 
+body.dark header {
+  color: #aab;
+}
+
 h1 {
   text-shadow: 0px 0px 3px #bbb;
   font-family: 'Cinzel', serif;
@@ -46,6 +55,14 @@ h1 {
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
+}
+
+label {
+  color: #000;
+}
+
+body.dark label {
+  color: #aab;
 }
 
 .portalista {
@@ -100,13 +117,18 @@ h1 {
 .tarea {
   display: inline-block;
   margin: 0.3rem;
+  color: black;
+}
+
+body.dark .tarea {
+  color: #aab;
 }
 
 .tareaCompleta {
   color: #bbb;
   -webkit-box-shadow: inset 0 0 10px #5f5;
           box-shadow: inset 0 0 10px #5f5;
-  background-color: rgba(153, 255, 153, 0.7);
+  background-color: #99ff99b3;
 }
 
 .descripcionTarea {
@@ -115,10 +137,10 @@ h1 {
 }
 
 .pomodoroTimer {
-  background-color: rgba(255, 255, 85, 0.7);
+  background-color: #ffff55b3;
   border-radius: 20px;
   padding: 1rem;
-  margin-right: 3rem;
+  margin-right: 1rem;
   display: flexbox;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -131,6 +153,12 @@ h1 {
   font-family: 'Saira', sans-serif;
   height: 27vh;
   aspect-ratio: 2/1;
+  color: black;
+}
+
+body.dark .pomodoroTimer {
+  -webkit-box-shadow: 0.2rem 0.2rem 0.5rem #003;
+          box-shadow: 0.2rem 0.2rem 0.5rem #003;
 }
 
 .pomodoroDescripcion, .infoVueltas {
@@ -190,7 +218,7 @@ h1 {
 }
 
 .pomodoroTimerConcentrate {
-  background-color: rgba(255, 0, 0, 0.7);
+  background-color: #ff0000b3;
   color: #bbb;
 }
 
@@ -232,6 +260,8 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   outline: none;
+  -webkit-box-shadow: 0 0 3rem 0.3rem #f00;
+          box-shadow: 0 0 3rem 0.3rem #f00;
 }
 
 .switch::after {
@@ -247,12 +277,12 @@ h1 {
   border-radius: 100px;
   -webkit-transition: 300 ease all;
   transition: 300 ease all;
-  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .switch.active {
   background-color: #77d;
+  -webkit-box-shadow: 0 0 3rem 0.2rem #99f;
+          box-shadow: 0 0 3rem 0.2rem #99f;
 }
 
 .switch.active::after {
