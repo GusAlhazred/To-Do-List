@@ -12,6 +12,7 @@ body{
     height: 1rem;
     background: linear-gradient(to top, $fondo 96%, $renglonClr 100%) ;
     background-repeat: repeat;
+    transition: 2;
     &.dark{
         background: linear-gradient(to top, $fondoDark 96%, $renglonClrDark 100%) ;
     }
@@ -24,7 +25,6 @@ main{
 header{
     height: 5rem;
     width: 100vw;
-    /* border-bottom: 2px solid #669; */
     display: flex;
     align-items: center;
     justify-content: center;
