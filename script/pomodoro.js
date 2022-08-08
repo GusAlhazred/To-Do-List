@@ -122,7 +122,7 @@ const esteticaPlay = () => {
 const pausarReloj = () => {
     if (estaPausado){
         estaPausado = false;
-        correrReloj = setInterval(refrescarReloj, 1000);
+        correrReloj = setInterval(refrescarReloj, 1);
         esteticaPlay();
     } else {
         estaPausado = true;
@@ -162,8 +162,27 @@ const refrescarReloj = () => {
     tiempoActual--;
 }
 
-const cartel = () =>{
+const cargarAPI = async () => {
+    const resp = await fetch("https://random.dog/woof.json");
+    let data = await resp.json();
+
+    const esMP4 = data.url.search(".mp4");
+    esMP4 === -1? true : data=cargarAPI();
+    console.log(data.url)
+    return data
+}
+
+const cartel = async () =>{
+    const resp = await fetch("https://random.dog/woof.json");
+    let data = await resp.json();
+
+    const esMP4 = data.url.search(".mp4");
+    esMP4 === -1? true : data=cargarAPI();
     Swal.fire({
+        imageUrl: data.url,
+        // imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Perritos!",
         text: 'Dale play otra vez para seguir con el proximo bracket! No pierdas el ritmo!',
         icon: 'success',
         toast: true,
@@ -182,7 +201,7 @@ const empezarReloj = () => {
     seteoReloj();
     modificarBtnPomodoro();
     infoNroVuelta.innerHTML = "Vuelta Nro: " + (Math.floor((nroEjecutacion-1)/2) +1);
-    correrReloj = setInterval(refrescarReloj, 1000);
+    correrReloj = setInterval(refrescarReloj, 1);
 }
 
 

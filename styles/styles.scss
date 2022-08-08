@@ -8,11 +8,11 @@ html{
     font-size: 24px;
     font-family: 'Indie Flower', cursive;
 }
-body{    
+.body{    
+    transition: 5s;
     height: 1rem;
     background: linear-gradient(to top, $fondo 96%, $renglonClr 100%) ;
     background-repeat: repeat;
-    transition: 2;
     &.dark{
         background: linear-gradient(to top, $fondoDark 96%, $renglonClrDark 100%) ;
     }
