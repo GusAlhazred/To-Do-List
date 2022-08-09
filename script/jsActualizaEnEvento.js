@@ -104,16 +104,36 @@ const dibujarArray= () => {
     localStorage.setItem("tareas", arrayListaTareasStr)
 }
 
+const cartelError = () => {
+    Swal.fire({
+        title: "Error de ingreso",
+        text: 'Dale una descripcion a la tarea que estas intentando agregar',
+        icon: 'error',
+        toast: true,
+        position: "top-end",
+        showConfirmButton: true,
+        confirmButtonText: "Aww! Ok :(",
+        timer: 5000,
+        timerProgressBar: true
+    })
+}
+
 const agregarLista= (e) => {
     e.preventDefault();    
     const input = document.querySelector("[data-txt-agregar]");
     const descripcionTarea = input.value;
-    input.value = "";
-    const nuevaTarea = new DatosTarea(arrayListaTareas.length+1, descripcionTarea, false)
-    arrayListaTareas.push(nuevaTarea);
-    console.log(arrayListaTareas);
-    dibujarArray()
-    console.log(descripcionTarea);
+    let error=false;
+    (!descripcionTarea.trim()) && (error=true) && (cartelError());
+    if (error){
+        return false
+    } else {
+        input.value = "";
+        const nuevaTarea = new DatosTarea(arrayListaTareas.length+1, descripcionTarea, false)
+        arrayListaTareas.push(nuevaTarea);
+        console.log(arrayListaTareas);
+        dibujarArray()
+        console.log(descripcionTarea);
+    }
 }
 
 const reiniciarLista = (e) => {

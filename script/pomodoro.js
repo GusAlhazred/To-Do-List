@@ -1,5 +1,5 @@
 const tiempoIntervalosTrabajo = 25,
-    tiempoIntervalosDescanso = 0.1,
+    tiempoIntervalosDescanso = 5,
     cantMsReloj=1000;
     reloj = document.querySelector(".reloj"),
     btnPomodoro = document.querySelector("[data-btnPomodoro]"),

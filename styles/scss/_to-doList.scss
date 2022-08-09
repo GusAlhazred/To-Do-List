@@ -60,6 +60,7 @@ label{
     display: inline-block;
     margin: 0.3rem;
     color:black;
+    transition: color $tiempoTransicion;
     body.dark &{
         color: $clrFuenteDark;
     }
