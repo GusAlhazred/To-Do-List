@@ -12,7 +12,6 @@
     display: flex;
     outline: none;
     box-shadow: 0 0 3rem 0.3rem $clrBotonRojo;
-    transition: 300 ease all;
     &::after{
         content: "";
         display: block;
@@ -24,8 +23,7 @@
         left: 0;
         right: unset;
         border-radius: 100px;
-        transition: 300 ease all;
-    }
+}
     &.active {
         background-color: #77d;
         box-shadow: 0 0 3rem 0.2rem $renglonClrDark;
@@ -41,7 +39,6 @@
         line-height: 30px;
         display: block;
         background: none;
-        transition: 300 ease all;
         .fa-empire{
             color: #a33;
         }

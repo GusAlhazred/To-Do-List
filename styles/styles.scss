@@ -9,12 +9,29 @@ html{
     font-family: 'Indie Flower', cursive;
 }
 .body{    
-    transition: 5s;
     height: 1rem;
+    // background-color: $fondo;
     background: linear-gradient(to top, $fondo 96%, $renglonClr 100%) ;
     background-repeat: repeat;
-    &.dark{
-        background: linear-gradient(to top, $fondoDark 96%, $renglonClrDark 100%) ;
+    transition: all 0.3s;
+    // &.dark{
+    //     background-color: $fondoDark;
+    //     background: linear-gradient(to top, $fondoDark 96%, $renglonClrDark 100%) ;
+    // }
+}
+.darkModeColor{
+    height: 100vh;
+    width: 100vw;
+    mix-blend-mode: hard-light;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: background-color 2s;
+    body.dark &{
+        background-color: $fondoDark;
+        
     }
 }
 main{
@@ -37,7 +54,8 @@ h1{
     font-family: 'Cinzel', serif;
     position: relative;
     left:50%;
-    transform: translate(-50%)
+    transform: translate(-50%);
+    transition: 2s
 }
 
 @import "./scss/to-doList";

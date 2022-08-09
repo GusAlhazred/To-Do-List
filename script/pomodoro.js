@@ -1,5 +1,6 @@
 const tiempoIntervalosTrabajo = 25,
-    tiempoIntervalosDescanso = 5,
+    tiempoIntervalosDescanso = 0.1,
+    cantMsReloj=1000;
     reloj = document.querySelector(".reloj"),
     btnPomodoro = document.querySelector("[data-btnPomodoro]"),
     btnReinicio = document.querySelector("[data-btnPomodoroReinicio]"),
@@ -122,7 +123,7 @@ const esteticaPlay = () => {
 const pausarReloj = () => {
     if (estaPausado){
         estaPausado = false;
-        correrReloj = setInterval(refrescarReloj, 1);
+        correrReloj = setInterval(refrescarReloj, cantMsReloj);
         esteticaPlay();
     } else {
         estaPausado = true;
@@ -145,6 +146,18 @@ const modificarBtnPomodoro = () => {
     }
 }
 
+const generarNotificacion = () => {
+    const avisoDesktop = new Notification("Pomodoro To-Do List",{
+        body: "El Reloj termino! Volve a darle play"
+    })
+}
+
+const avisar = () => {
+    cartel();
+    const hayPermisosNotificaciones = (Notification.permission === "granted"); 
+    hayPermisosNotificaciones && ( generarNotificacion());
+}
+
 const refrescarReloj = () => {
     let minutos = Math.floor(tiempoActual/60);
     let segundos = tiempoActual % 60;
@@ -157,7 +170,7 @@ const refrescarReloj = () => {
         relojTerminado=true;
         modificarBtnPomodoro();
         agregarListenersAModoBtn();
-        btnReinicioActivo?  btnReinicioActivo = false : cartel();
+        btnReinicioActivo?  btnReinicioActivo = false : avisar();
     }
     tiempoActual--;
 }
@@ -166,21 +179,15 @@ const cargarAPI = async () => {
     const resp = await fetch("https://random.dog/woof.json");
     let data = await resp.json();
 
-    const esMP4 = data.url.search(".mp4");
-    esMP4 === -1? true : data=cargarAPI();
-    console.log(data.url)
+    const esMP4 = data.url.includes(".mp4");
+    esMP4 && (data=cargarAPI());
     return data
 }
 
 const cartel = async () =>{
-    const resp = await fetch("https://random.dog/woof.json");
-    let data = await resp.json();
-
-    const esMP4 = data.url.search(".mp4");
-    esMP4 === -1? true : data=cargarAPI();
+    const perritos = await cargarAPI();
     Swal.fire({
-        imageUrl: data.url,
-        // imageWidth: 400,
+        imageUrl: perritos.url,
         imageHeight: 200,
         imageAlt: "Perritos!",
         text: 'Dale play otra vez para seguir con el proximo bracket! No pierdas el ritmo!',
@@ -201,7 +208,7 @@ const empezarReloj = () => {
     seteoReloj();
     modificarBtnPomodoro();
     infoNroVuelta.innerHTML = "Vuelta Nro: " + (Math.floor((nroEjecutacion-1)/2) +1);
-    correrReloj = setInterval(refrescarReloj, 1);
+    correrReloj = setInterval(refrescarReloj, cantMsReloj);
 }
 
 

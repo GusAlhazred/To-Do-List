@@ -1,5 +1,6 @@
 label{
     color: #000;
+    transition: 2s;
     body.dark &{
         color: $clrFuenteDark;
     }
