@@ -138,9 +138,10 @@ const agregarLista= (e) => {
     e.preventDefault();    
     const input = document.querySelector("[data-txt-agregar]");
     const descripcionTarea = input.value;
-    let error=false;
-    (!descripcionTarea.trim()) && (error=true) && (cartelError());
-    if (error){
+
+
+    if (!descripcionTarea.trim()){
+        cartelError()
         return false
     } else {
         input.value = "";
