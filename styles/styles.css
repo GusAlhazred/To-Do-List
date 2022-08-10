@@ -18,11 +18,11 @@ html {
 }
 
 .darkModeColor {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   mix-blend-mode: hard-light;
   background-color: transparent;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -38,9 +38,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 header {
@@ -132,9 +134,16 @@ body.dark label {
 }
 
 .tarea {
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0.3rem;
   color: black;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-transition: color 2s;
   transition: color 2s;
 }
@@ -155,6 +164,14 @@ body.dark .tarea {
   text-decoration: underline;
 }
 
+.divDescripcionTareas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
 .pomodoroTimer {
   background-color: #ffff55b3;
   border-radius: 20px;
@@ -171,7 +188,7 @@ body.dark .tarea {
           box-shadow: 0.2rem 0.2rem 0.5rem #550;
   font-family: 'Saira', sans-serif;
   width: 35vw;
-  height: 15vw;
+  aspect-ratio: 7/3;
   color: black;
   -webkit-transition: 2s;
   transition: 2s;

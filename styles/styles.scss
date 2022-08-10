@@ -20,11 +20,11 @@ html{
     // }
 }
 .darkModeColor{
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     mix-blend-mode: hard-light;
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
@@ -36,7 +36,8 @@ html{
 }
 main{
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
     
 }
 header{
@@ -64,4 +65,4 @@ h1{
 
 @import "./scss/darkMode";
 
-// @import "./scss/mediaQuery";
+@import "./scss/mediaQuery";

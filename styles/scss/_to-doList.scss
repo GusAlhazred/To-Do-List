@@ -57,9 +57,11 @@ label{
     text-align: right;
 }
 .tarea{
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     margin: 0.3rem;
     color:black;
+    justify-content: space-between;
     transition: color $tiempoTransicion;
     body.dark &{
         color: $clrFuenteDark;
@@ -75,4 +77,9 @@ label{
 .descripcionTarea{
     font-weight: 900;
     text-decoration:underline;
+}
+
+.divDescripcionTareas{
+    display: flex;
+    flex-wrap: nowrap;
 }
