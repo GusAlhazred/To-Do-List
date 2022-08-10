@@ -309,6 +309,8 @@ body.dark .pomodoroTimer {
 
 .switch::after {
   content: "";
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
   display: block;
   width: 30px;
   aspect-ratio: 1/1;
@@ -327,8 +329,8 @@ body.dark .pomodoroTimer {
 }
 
 .switch.active::after {
-  left: unset;
-  right: 0;
+  -webkit-transform: translateX(1.25rem);
+          transform: translateX(1.25rem);
 }
 
 .switch span {
