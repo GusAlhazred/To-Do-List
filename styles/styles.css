@@ -236,7 +236,7 @@ body.dark .pomodoroTimer {
           box-sizing: border-box;
 }
 
-.btnTipo:hover {
+.btnActivos:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   font-weight: 800;

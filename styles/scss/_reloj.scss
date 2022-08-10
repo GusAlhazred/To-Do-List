@@ -57,11 +57,16 @@
     border-radius: 50px;
     transition: 200ms;
     box-sizing: border-box;
+}
+
+.btnActivos{
     &:hover{
         transform: scale(1.2);
         font-weight: 800;
     }
+    
 }
+
 .btnSeleccionado{
     transform: scale(1.2);
     font-weight: 800;

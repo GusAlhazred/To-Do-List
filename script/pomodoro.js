@@ -66,6 +66,10 @@ const reiniciarBtns = () => {
     btnTrabajo.classList.remove("btnSeleccionado");
     btnDescansoCorto.classList.remove("btnSeleccionado");
     btnDescansoLargo.classList.remove("btnSeleccionado");
+    
+    btnTrabajo.classList.add("btnActivos");
+    btnDescansoCorto.classList.add("btnActivos");
+    btnDescansoLargo.classList.add("btnActivos");
 
 }
 
@@ -229,6 +233,9 @@ const apagarBotones = () => {
     btnTrabajo.classList.add("btnDesactivado");
     btnDescansoCorto.classList.add("btnDesactivado");
     btnDescansoLargo.classList.add("btnDesactivado");
+    btnTrabajo.classList.remove("btnActivos");
+    btnDescansoCorto.classList.remove("btnActivos");
+    btnDescansoLargo.classList.remove("btnActivos");
 }
 
 const empezarReloj = () => {
