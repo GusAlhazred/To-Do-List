@@ -46,7 +46,7 @@ const generarLblDescripcionTarea = () => {
 }
 const generarDescripcionTarea = () => {
     const descripcionTarea = document.createElement("p");
-    descripcionTarea.classList.add("tarea");
+    // descripcionTarea.classList.add("tarea");
     descripcionTarea.innerText = tareaListada.tarea;
     descripcionTarea.classList.add("descripcionTarea");
     return(descripcionTarea)

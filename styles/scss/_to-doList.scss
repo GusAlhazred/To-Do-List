@@ -1,11 +1,24 @@
 label{
-    color: #000;
+    color: $clrFuente;
     transition: 2s;
     body.dark &{
         color: $clrFuenteDark;
     }
 }
-
+// form{
+//     display: flex;
+//     flex-wrap: nowrap;
+//     flex-direction: row;
+//     justify-content: space-evenly;
+// }
+.cabeceraFormulario{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+    .botoneraFormulario{
+        margin-left: 1rem;
+    }
+}
 
 .portalista{
     display: flexbox;
@@ -23,22 +36,48 @@ label{
     width: 1rem;
     height: 1rem;
     background-color: $clrBotonVerde;
+    transition: 200ms;
+    body.dark &{
+        background-color: transparent;
+        border: 0.1rem solid $clrFuenteDark;
+        color: $clrFuenteDark;
+        font-weight: 700;        
+    }
+    &:hover{
+        transform: scale(1.1);
+    }
 }
 
-.btnReiniciar{
-    width: 5rem;
-    height: 1rem;
-    background-color: $clrBotonRojo;
-    font-family: 'Cinzel', serif;
-    
-}
 
 .btnSacar{
     width: 1rem;
     height: 1rem;
     background-color: $clrBotonRojo;
     border-radius: 5px;
-
+    transition: all 200ms;
+    body.dark &{
+        background-color: transparent;
+        border: 0.1rem solid $clrFuenteDark;
+        color: $clrFuenteDark;
+        font-weight: 700;        
+    }
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+.btnReiniciar{
+    width: 5rem;
+    height: 1rem;
+    background-color: $clrBotonRojo;
+    font-family: 'Cinzel', serif;
+    body.dark &{
+        background-color: transparent;
+        border: 0.1rem solid $clrFuenteDark;
+        color: $clrFuenteDark;
+        font-weight: 700;
+        padding: 0.1rem;
+        box-sizing: content-box;        
+    }
 }
 
 .btnAgregar{
@@ -46,7 +85,15 @@ label{
     height: 1rem;
     background-color: $clrBotonVerde;
     box-shadow: inset 0 0 #9f9;
-
+    border-radius: 10px;
+    body.dark &{
+        background-color: transparent;
+        border: 0.1rem solid $clrFuenteDark;
+        color: $clrFuenteDark;
+        font-weight: 700;
+        padding: 0.1rem;
+        box-sizing: content-box;        
+    }
 }
 .btnReiniciarReloj, .btnEmpezarReloj{
     margin: 0.1rem;
@@ -69,9 +116,29 @@ label{
 }
 
 .tareaCompleta{
-    color: #bbb;
+    color: $clrFuenteDark;
     box-shadow: inset 0 0 10px $clrBotonVerde;
     background-color: #99ff99b3;
+    body.dark &{
+        box-shadow: inset 0 0 10px $clrFuenteDark;
+        background-color: transparent;
+        
+    }
+}
+.textoAgregar{
+    font-family: 'Indie Flower', cursive;
+    background-color: transparent;
+    color: $clrFuente;
+    height: 1.2rem;
+    border: 0;
+    font-size: 1.2rem;
+    // border-bottom: $renglonClr 0.1rem solid;
+    margin-left: 1rem;
+    transition: all 200ms;
+    body.dark &{
+        border-bottom: $clrFuenteDark 0.1rem solid;
+        color: $clrFuenteDark;
+    }
 }
 
 .descripcionTarea{
@@ -82,4 +149,11 @@ label{
 .divDescripcionTareas{
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
+    label{
+        margin-right: 0.25rem;
+    }
+    p{
+        margin-left: 0.25rem;
+    }
 }

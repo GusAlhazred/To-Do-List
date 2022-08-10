@@ -1,16 +1,110 @@
 
+@media only screen   and (max-width: $bpXXL){
+    
+
+}
+
 @media only screen   and (max-width: $bpXL){
+    main{
+        flex-direction: column;
+        align-items: center;
+    }
+    .cabeceraFormulario{
+        justify-content: center;
+    }
+    form{
+        margin-top: 1rem;
+    }
+    
+    .pomodoroTimer{
+        width: 60vw;
+        margin: 0;
+        .btnEmpezarReloj{
+            width: 4rem;
+            height: 1.5rem;
+        }
+        .btnReiniciarReloj{
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
     
 }
 
 @media only screen   and (max-width: $bpMd){
-    
+    html{
+        font-size: 20px;
+    }
+    .switch{
+        &.active{
+            &::after{
+                transform: translateX(1.5rem);
+            }
+        }
+    }
 }
 
 @media only screen   and (max-width: $bpSm){
-    
+    html{
+        font-size: 18px;
+    }
+    .switch{
+        &.active{
+            &::after{
+                transform: translateX(1.7rem);
+            }
+        }
+    }
+    .btnTipo{
+        padding: 0.2rem;
+    }
 }
 
 @media only screen   and (max-width: $bpXS){
-    
+    html{
+        font-size: 16px;
+    }
+    header{
+        
+        width: 100%;
+        justify-content:space-between;
+        h1{
+            transform: translate(0);
+            left: 1rem;
+        }
+    }
+    .switch{
+        &.active{
+            &::after{
+                transform: translateX(2.1rem);
+            }
+        }
+    }
+    form{
+        .cabeceraFormulario{
+            flex-direction: column;
+            align-items: center;
+            .btnReiniciar{
+                width: 6rem;
+            }
+        }
+        .tarea{
+            flex-direction: column;
+            align-items: center;
+            border-top: 0.1rem solid $clrFuente;
+            border-bottom: 0.1rem solid $clrFuente;
+            .btnCompleto, .btnSacar{
+                line-height: 0.7rem;
+            }
+            body.dark &{
+                border-top: 0.1rem solid $clrFuenteDark;
+                border-bottom: 0.1rem solid $clrFuenteDark;
+
+            }
+
+        }
+    }
+    .darkModeColor{
+        width: $bpXS;
+    }
 }

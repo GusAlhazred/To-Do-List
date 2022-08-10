@@ -31,20 +31,24 @@
             <p class="infoVueltas" data-infoVueltas>Vuelta Nro: 0</p>
             <p class="reloj">00:00</p>
             <div class="controlesPomodoro">
-                <button class="btnEmpezarReloj" data-btnPomodoro><i class="fa-solid fa-play"></i></button>
-                <button class="btnReiniciarReloj" data-btnPomodoroReinicio><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                <button class="btnEmpezarReloj btnTipoClr btnActivos" data-btnPomodoro><i class="fa-solid fa-play"></i></button>
+                <button class="btnReiniciarReloj btnTipoClr btnActivos" data-btnPomodoroReinicio><i class="fa-solid fa-arrow-rotate-left"></i></button>
             </div>
             <div class="controlesTipoTimer">
-                <button class="btnTrabajo btnTipo btnActivos" data-btnTrabajo> Trabajo </button>
-                <button class="btnDescansoCorto btnTipo btnActivos" data-btnDescansoCorto> Descanso </button>
-                <button class="btnDescansoLargo btnTipo btnActivos" data-btnDescansoLargo> Descanso Largo </button>
+                <button class="btnTrabajo btnTipo btnTipoClr btnActivos" data-btnTrabajo> Trabajo </button>
+                <button class="btnDescansoCorto btnTipo btnTipoClr btnActivos" data-btnDescansoCorto> Descanso </button>
+                <button class="btnDescansoLargo btnTipo btnTipoClr btnActivos" data-btnDescansoLargo> Descanso Largo </button>
             </div>
         </div>
         <form action="">
-            <label for="textoAgregar">Agregar tarea: </label>
-            <input id="textoAgregar" class="tareaInvalida" type="text" placeholder="Ingrese la tarea" data-txt-agregar>
-            <button class="btn btnAgregar" data-btn-agregar>+</button>
-            <button class="btn btnReiniciar" data-btn-reiniciar>Reiniciar  <i class="fa-solid fa-trash"></i></button>
+            <div class="cabeceraFormulario">
+                <label for="textoAgregar">Agregar tarea: </label>
+                <input id="textoAgregar" class="textoAgregar" type="text" placeholder="Ingrese la tarea" data-txt-agregar>
+                <div class="botoneraFormulario">
+                    <button class="btn btnAgregar btnActivos" data-btn-agregar>+</button>
+                    <button class="btn btnReiniciar btnActivos" data-btn-reiniciar>Reiniciar  <i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
             <div class="portaLista" data-lista-tareas>
             </div>
         </form>
