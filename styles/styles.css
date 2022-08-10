@@ -573,5 +573,8 @@ body.dark .btnSeleccionado {
   .darkModeColor {
     width: 576PX;
   }
+  .pomodoroTimer {
+    width: 80vw;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
