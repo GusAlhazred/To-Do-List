@@ -37,6 +37,7 @@ label{
     height: 1rem;
     background-color: $clrBotonVerde;
     transition: 200ms;
+    border: 0.1rem solid transparent;
     body.dark &{
         background-color: transparent;
         border: 0.1rem solid $clrFuenteDark;
@@ -55,6 +56,7 @@ label{
     background-color: $clrBotonRojo;
     border-radius: 5px;
     transition: all 200ms;
+    border: 0.1rem solid transparent;
     body.dark &{
         background-color: transparent;
         border: 0.1rem solid $clrFuenteDark;

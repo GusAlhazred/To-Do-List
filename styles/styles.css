@@ -121,6 +121,7 @@ body.dark label {
   background-color: #5f5;
   -webkit-transition: 200ms;
   transition: 200ms;
+  border: 0.1rem solid transparent;
 }
 
 body.dark .btnCompleto {
@@ -142,6 +143,7 @@ body.dark .btnCompleto {
   border-radius: 5px;
   -webkit-transition: all 200ms;
   transition: all 200ms;
+  border: 0.1rem solid transparent;
 }
 
 body.dark .btnSacar {
