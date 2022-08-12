@@ -84,31 +84,24 @@ const dibujarArray= () => {
         const tarea = document.createElement("div");       
         
         const divLblTarea = document.createElement("div")
-
         divLblTarea.appendChild(generarLblNroTarea());
-        
         divLblTarea.appendChild(generarNroTarea());
 
         tarea.appendChild(divLblTarea);
 
         const divDescripcionTarea = document.createElement("div")
-
         divDescripcionTarea.appendChild(generarLblDescripcionTarea());
-        
         divDescripcionTarea.appendChild(generarDescripcionTarea());
-
         divDescripcionTarea.classList.add("divDescripcionTareas");
         
         tarea.appendChild(divDescripcionTarea);
 
         const divContenedorBotones = document.createElement("div")
-
         divContenedorBotones.appendChild(generarBtnCompletarTarea(i));
-        
         divContenedorBotones.appendChild(generarBtnBorrarTarea(i));
 
         tarea.appendChild(divContenedorBotones)
-
+        
         tarea.classList.add("tarea")
 
         tareaListada.hecha? tarea.classList.add("tareaCompleta") : tarea.classList.remove("tareaCompleta");

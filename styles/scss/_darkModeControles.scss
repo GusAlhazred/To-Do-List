@@ -14,7 +14,7 @@
     box-shadow: 0 0 3rem 0.3rem $clrBotonRojo;
     &::after{
         content: "";
-        transition: all 200ms;
+        transition: all $tiempoTransicionRapido;
         display: block;
         width: 30px;
         aspect-ratio: 1/1;

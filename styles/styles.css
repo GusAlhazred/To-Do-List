@@ -357,8 +357,8 @@ body.dark .btnTipoClr {
 }
 
 .btnActivos {
-  -webkit-transition: 500ms;
-  transition: 500ms;
+  -webkit-transition: 200ms;
+  transition: 200ms;
 }
 
 .btnActivos:hover {

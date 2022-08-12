@@ -1,26 +1,27 @@
+/////////////Colores//////////
+//Fondo
 $fondo: #ff5;
 $renglonClr: #f00;
 $fondoDark: #114;
 $renglonClrDark: #99f;
-
+//Fuente
 $clrFuente: black;
 $clrFuenteDark: #aab;
-
+//Sombras
 $fondoSombraDark:#003;
 $fondoSombra: #550;
-
-$clrFondoRelojStandar:#ffff55b3;
-
-
+//Reloj
+// $clrFondoRelojStandar:#ffff55b3;
+//Botones
 $resplandorBtnDarkmodeDark: rgba(170, 170, 187, 0.2);
-
-$tiempoTransicion: 2s;
-
-
 $clrBotonRojo:#f00;
 $clrBotonVerde: #5f5;
 
+////////////////Tiempo///////////////
+$tiempoTransicionStandar: 2s;
+$tiempoTransicionRapido: 200ms;
 
+////////////////Brakpoints///////////////////
 $bpXXL:1400px;
 $bpXL:1200px;
 $bpMd:992px;

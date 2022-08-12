@@ -10,7 +10,7 @@
     width: 35vw;
     aspect-ratio: 7/3;
     color: $clrFuente;
-    transition: 2s;
+    transition: $tiempoTransicionStandar;
     
     body.dark &{
         color: $clrFuenteDark;
@@ -52,26 +52,13 @@
     padding: 0.3rem;
     font-size: 0.7rem;
     border-radius: 50px;
-    transition: 200ms;
+    transition: $tiempoTransicionRapido;
     box-sizing: border-box;
     font-weight: 900;
-    // ::before{
-    //     content: "";
-    //     position: absolute;
-    //     left: 0;
-    //     top: 0;
-    //     height: 1rem;
-    //     width: 1rem;
-    //     background-color: $clrFuente;
-    //     body.dark &{
-    //         background-color: $clrFuenteDark;
-    //     }
-    // }
-
 }
 
 .btnActivos{
-    transition: 500ms;
+    transition: $tiempoTransicionRapido;
     &:hover{
         transform: scale(1.2);
         background-color: $clrFuente;
@@ -115,6 +102,9 @@
     background-color: transparent;
     border-radius: 5px;
 }
+
+
+//Los desactivo por ahora pero probablemente mas adelante lo use. Asi que lo voy a dejar
 
 // .btnTrabajo{
 //     background-color: rgb(238, 119, 119);
