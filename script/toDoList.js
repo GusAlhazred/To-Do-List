@@ -55,7 +55,7 @@ const generarBtnCompletarTarea = (i) => {
     const btnHecho = document.createElement("input");
     btnHecho.type="button";
     btnHecho.value = "✓";
-    btnHecho.classList.add ("btn", "btnCompleto");
+    btnHecho.classList.add ("btn", "btnCompleto", "resaltarDiscreto");
     btnHecho.dataset.id= i;
     btnHecho.addEventListener ("click", terminarTarea)
     return(btnHecho)    
@@ -65,7 +65,7 @@ const generarBtnBorrarTarea = (i) => {
     const btnBorrar = document.createElement("input");
     btnBorrar.type="button";
     btnBorrar.value = "✘";
-    btnBorrar.classList.add ("btn", "btnSacar");
+    btnBorrar.classList.add ("btn", "btnSacar", "resaltarDiscreto");
     btnBorrar.dataset.id= i;
     btnBorrar.addEventListener("click", borrarTarea);
     return(btnBorrar)

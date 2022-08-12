@@ -38,9 +38,6 @@ label{
         color: $clrFuenteDark;
         font-weight: 700;        
     }
-    &:hover{
-        transform: scale(1.1);
-    }
 }
 
 
@@ -57,9 +54,6 @@ label{
         color: $clrFuenteDark;
         font-weight: 700;        
     }
-    &:hover{
-        transform: scale(1.1);
-    }
 }
 .btnReiniciar{
     width: 5rem;
@@ -70,6 +64,7 @@ label{
     font-weight: 700;
     box-sizing: content-box;   
     border: 0.1rem solid transparent;     
+    transition: $tiempoTransicionRapido;
     body.dark &{
         background-color: transparent;
         border: 0.1rem solid $clrFuenteDark;
@@ -87,16 +82,15 @@ label{
     padding: 0.1rem;
     font-weight: 700;
     box-sizing: content-box;        
-    border: 0.1rem solid transparent;     
+    border: 0.1rem solid transparent;
+    transition: $tiempoTransicionRapido;     
     body.dark &{
         background-color: transparent;
         border: 0.1rem solid $clrFuenteDark;
         color: $clrFuenteDark;
     }
 }
-.btnReiniciarReloj, .btnEmpezarReloj{
-    margin: 0.1rem;
-}
+
 
 .prioridad{
     width: 2rem;
@@ -155,5 +149,11 @@ label{
     }
     p{
         margin-left: 0.25rem;
+    }
+}
+
+.resaltarDiscreto{
+    &:hover{
+        transform: scale(1.1);
     }
 }
