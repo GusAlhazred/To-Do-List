@@ -171,35 +171,6 @@ const modificarBtnPomodoro = () => {
     }
 }
 
-const generarNotificacion = () => {
-    const avisoDesktop = new Notification("Pomodoro To-Do List",{
-        body: "El Reloj termino! Volve a darle play"
-    })
-}
-
-const avisarYReiniciar = () => {
-    reiniciarBtns();
-    cartel();
-    const hayPermisosNotificaciones = (Notification.permission === "granted"); 
-    hayPermisosNotificaciones && ( generarNotificacion());
-}
-
-const refrescarReloj = () => {
-    let minutos = Math.floor(tiempoActual/60);
-    let segundos = tiempoActual % 60;
-    
-    minutos < 10? minutos= "0"+minutos : minutos;
-    segundos < 10? segundos= "0"+segundos : segundos;
-    reloj.innerHTML = `${minutos}:${segundos}`;
-    if (tiempoActual <= 0){
-        clearInterval(correrReloj);
-        relojTerminado=true;
-        modificarBtnPomodoro();
-        agregarListenersAModoBtn();
-        btnReinicioActivo?  btnReinicioActivo = false : avisarYReiniciar();
-    }
-    tiempoActual--;
-}
 
 const cargarAPI = async () => {
     const resp = await fetch("https://random.dog/woof.json");
@@ -225,6 +196,38 @@ const cartel = async () =>{
         timerProgressBar: true
     })
 }
+
+const generarNotificacion = () => {
+    const avisoDesktop = new Notification("Pomodoro To-Do List",{
+        body: "El Reloj termino! Volve a darle play"
+    })
+}
+
+
+const avisarYReiniciar = () => {
+    reiniciarBtns();
+    cartel();
+    const hayPermisosNotificaciones = (Notification.permission === "granted"); 
+    hayPermisosNotificaciones && ( generarNotificacion());
+}
+
+const refrescarReloj = () => {
+    let minutos = Math.floor(tiempoActual/60);
+    let segundos = tiempoActual % 60;
+    
+    minutos < 10? minutos= "0"+minutos : minutos;
+    segundos < 10? segundos= "0"+segundos : segundos;
+    reloj.innerHTML = `${minutos}:${segundos}`;
+    if (tiempoActual <= 0){
+        clearInterval(correrReloj);
+        relojTerminado=true;
+        modificarBtnPomodoro();
+        agregarListenersAModoBtn();
+        btnReinicioActivo?  btnReinicioActivo = false : avisarYReiniciar();
+    }
+    tiempoActual--;
+}
+
 
 const apagarBotones = () => {
     btnTrabajo.removeEventListener("click", fixTrabajar);
